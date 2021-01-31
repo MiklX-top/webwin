@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+/* Включите отступ и границу в общую ширину и высоту элемента */
+* {
+  box-sizing: border-box;
+}
+
+/* Удалите поля и отступы из списка */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Стиль элементов списка */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* сделайте элементы списка просматриваемыми */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Установите для всех нечетных элементов списка другой цвет (полосы зебры) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Более темный фон-цвет при наведении курсора */
+ul li:hover {
+  background: #ddd;
+}
+
+/* При нажатии на кнопку добавить цвет фона и вычеркнуть текст */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Добавить отметку "проверено" при нажатии на нее */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Стиль кнопки закрытия */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: red;
+  color: white;
+}
+
+/* Стиль заголовка */
+.header {
+  background-color: LightCyan;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Очистить поплавки после заголовка */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Стиль ввода */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Стиль кнопки "Добавить" */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+</style>
+</head>
+<body>
+
+<div id="myDIV" class="header">
+  <h2 style="margin:5px; color: black;">Список дел:</h2>
+  <input type="text" id="myInput" placeholder="Название...">
+  <span onclick="newElement()" class="addBtn">Добавить</span>
+</div>
+
+<ul id="myUL">
+  <li class="checked">Запустить WebWin</li>
+  <li class="checked">Открыть меню "Даты и времени"</li>
+</ul>
+
+<script>
+// Создайте кнопку "закрыть" и добавьте ее к каждому элементу списка
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Нажмите на кнопку закрыть, чтобы скрыть текущий элемент списка 
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Добавление символа "проверено" при нажатии на элемент списка
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Создайте новый элемент списка при нажатии на кнопку "Добавить"
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("Вы должны что-то написать!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Yandex.RTB R-A-443114-1 -->
+<div id="yandex_rtb_R-A-443114-1"></div>
+<script>
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-A-443114-1",
+                renderTo: "yandex_rtb_R-A-443114-1",
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+

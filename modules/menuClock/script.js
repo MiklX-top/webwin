@@ -1,0 +1,1 @@
+document.getElementById('napolnenie').innerHTML = '<InMenuClock><iframe src="modules/menuClock/calendar.html" frameborder="0" width="400px" height="700"></iframe></InMenuClock>';

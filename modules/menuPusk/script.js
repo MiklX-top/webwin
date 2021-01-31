@@ -1,0 +1,1 @@
+addHtml(" <div class='desktop'></div> <div class='menu'><div id='clock'></div><div class='menuPusk'><center><h1>Меню: </h1></center><br><button id='ocOff'></button></div><div class='menuClock'><napolnenie id='napolnenie'></napolnenie></div>");

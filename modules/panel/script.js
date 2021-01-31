@@ -1,0 +1,1 @@
+addHtml("<div class='panel' id='panel'></div>");
